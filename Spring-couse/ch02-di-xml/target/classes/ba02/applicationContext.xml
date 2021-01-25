@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <!--引用类型的Set注入
+        <bean id="XXX" class="YYY">
+            <property name="属性名称" value="bean的id(对象名称)值"/>等于setAge("21")
+            </bean>
+    -->
+    <bean id="Student" class="org.example.ba02.Student">
+        <property name="name" value="Kevin"/>
+        <property name="age" value="21"/>
+        <!--进行引用类型赋值-->
+        <property name="school" ref="School"></property>
+        <!--调用本xml中id为School的对象对其进行引用变量的赋值-->
+    </bean>
+    <!--声明school对象-->
+    <bean id="School" class="org.example.ba02.School">
+        <property name="name" value="重庆理工大学"></property>
+        <property name="address" value="两江校区"></property>
+    </bean>
+
+    </beans>
+
+<!--
+    spring的配置文件
+    1.beans：是跟标签，spring把java对象称为beans
+    2.spring-beans.xsd是约束文件，和mybatis指定 dtd是一样的。
+-->

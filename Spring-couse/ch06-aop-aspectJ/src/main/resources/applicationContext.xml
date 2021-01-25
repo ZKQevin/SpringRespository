@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/context
+    https://www.springframework.org/schema/context/spring-context.xsd
+    http://www.springframework.org/schema/aop
+    https://www.springframework.org/schema/aop/spring-aop.xsd">
+    <!--吧对象交给spring容器，有spring容器同意创建，管理对象-->
+    <!--声明目标对象-->
+    <!--<context:component-scan base-package="org.example.ba01"/>-->
+    <!--<context:component-scan base-package="org.example.ba02"/>-->
+    <bean id="SomeServiceImpl" class="org.example.ba08.SomeServiceImpl"/>
+    <!--声明切面类对象-->
+    <bean id="MyAspect" class="org.example.ba08.MyAspect"/>
+    <!--声明自动代理生成器:使用aspectj框架内部的功能，创建目标对象的代理对象。创建代理对象是在内存中实现的，修改目标对象的内存中的结构。创建为代理对象所以目标对象就是被修改后的代理对象
+-->
+    <!--aspectj-autoproxy:会把spring容器中的所有目标对象，一次性生成目标代理-->
+
+    <!--如果你期望目标类有接口，使用cglib代理
+    proxy-target-class="true"加这么一句就行了，那么他就是cglib的动态代理了
+    -->
+    <aop:aspectj-autoproxy proxy-target-class="true"/>
+
+
+</beans>

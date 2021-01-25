@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <!--    配置bean文件-->
+    <!--声明Student对象
+        简单类型：spring中规定java中字符串和String都是简单类型。
+        注入：就是赋值的意思
+        di：给属性赋值
+        1.set注入（设置注入）：spring中调用类的set方法，你可以在set方法中进行属性的赋值
+        2.简单类型的set注入方法：
+            <bean id="XXX" class="YYY">
+            <property name="变量名" value="值"/>等于setAge("21")
+            </bean>
+    -->
+    <bean id="Student01" class="org.example.ba01.Student"><!--创建好了一个Student对象--></bean>
+    <bean id="Student02" class="org.example.ba01.Student"><!--创建好了一个Student对象-->
+        <property name="name" value="Kevin"/><!--等于setName("Keivn")-->
+        <property name="age" value="21"/><!--等于setAge("21")-->
+        <property name="Email" value="Keivn@qq.com"/><!--等于setAge("21")-->
+    </bean>
+    <bean name="my_date" class="java.util.Date">
+        <property name="time" value="561791655415"></property><!--等于setTime（561791655415）-->
+    </bean>
+    </beans>
+
+<!--
+    spring的配置文件
+    1.beans：是跟标签，spring把java对象称为beans
+    2.spring-beans.xsd是约束文件，和mybatis指定 dtd是一样的。
+-->

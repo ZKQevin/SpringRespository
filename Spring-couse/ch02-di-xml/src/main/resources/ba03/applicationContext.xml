@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <!--构造方法的Set注入，使用<constructor-arg>进行构造方法
+        一个<constructor-arg>表示一个参数，有三个参数要使用三个<constructor-arg>
+        name:表示构造方法的形参名
+        index：表示构造方法的参数的位置，参数从左往右位置为0,1,2顺序，
+        value：构造方法的形参类型是简单类型，使用value
+        ref：构造方法的形参类型是引用类型的，使用ref
+    -->
+    <!--使用name属性实现构造注入-->
+    <bean id="Student_name" class="org.example.ba03.Student">
+        <constructor-arg name="school" ref="School_name"></constructor-arg>
+        <constructor-arg name="name" value="Kevin"></constructor-arg>
+        <constructor-arg name="age" value="18"></constructor-arg>
+    </bean>
+
+    <!--使用index属性实现构造注入-->
+    <bean id="Student_index" class="org.example.ba03.Student">
+        <constructor-arg index="0" ref="School_index"></constructor-arg><!--index0 1 2 位置可以互换，但是index=几必须写参数位置-->
+        <constructor-arg index="1" value="Jerry"></constructor-arg><!--还可以不写index那么他就是默认排的0 1 2-->
+        <constructor-arg index="2" value="6"></constructor-arg>
+    </bean>
+    <!--声明school对象-->
+    <bean id="School_name" class="org.example.ba03.School">
+        <property name="name" value="重庆理工大学"></property>
+        <property name="address" value="重庆"></property>
+    </bean>
+    <bean id="School_index" class="org.example.ba03.School">
+        <property name="name" value="哈尔滨工业大学"></property>
+        <property name="address" value="哈工大"></property>
+    </bean>
+    <bean id="File" class="java.io.File">
+        <constructor-arg name="parent" value="D:\Spring\Spring-couse\ch01-hello-spring"></constructor-arg><!--使用File的构造方法中parent路径-->
+        <constructor-arg name="child" value="readme.txt"></constructor-arg><!--子文件-->
+    </bean>
+
+    </beans>
+
+<!--
+    spring的配置文件
+    1.beans：是跟标签，spring把java对象称为beans
+    2.spring-beans.xsd是约束文件，和mybatis指定 dtd是一样的。
+-->

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <bean id="mysqlDao" class="org.example.dao.impl.UserDaoImpl"></bean>
+    <bean id="OracleDaoImpl" class="org.example.dao.impl.OracleDaoImpl"></bean>
+    <!--声明service对象-->
+    <!--<bean id="userService" class="org.example.service.impl.UserServiceImpl">
+        <property name="dao" ref="mysqlDao"></property>//将其更改为新鞋的OracleDaoImpl
+    </bean>-->
+    <bean id="userService" class="org.example.service.impl.UserServiceImpl">
+        <property name="dao" ref="OracleDaoImpl"></property>
+    </bean>
+    <bean id="Date" class="java.util.Date"></bean>
+</beans>
